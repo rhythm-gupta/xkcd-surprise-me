@@ -6,7 +6,7 @@ This file downloads all the images from xkcd.
 
 import urllib2,time,os
 from bs4 import BeautifulSoup
-for i in range(1,1163):#corrently there are 1162 images on xkcd. this number is subjected to change.
+for i in filter(lambda x:x!=404,range(1,1163)):#corrently there are 1162 images on xkcd. this number is subjected to change.
     rand=urllib2.urlopen("http://xkcd.com/"+str(i))
     soup=BeautifulSoup(rand.read())
     di=os.getcwd()+"/xkcd/"
