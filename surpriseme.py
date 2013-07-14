@@ -1,14 +1,17 @@
-#Import libraries
-import urllib2,os
-#beautifulSoup can be downloaded from http://www.crummy.com/software/BeautifulSoup/bs4/download/
+"""
+Surprise me. This script will download a random image from xkcd website.
+
+"""
+
+import urllib2, os
 from bs4 import BeautifulSoup
+#beautifulSoup can be downloaded from http://www.crummy.com/software/BeautifulSoup/bs4/download/
+img_name = 'xkcd_comic.png'   #change this if you want different file name
+rand = urllib2.urlopen("http://dynamic.xkcd.com/random/comic/")
 
-#Surprise me. This will download random image from xkcd website.
-rand=urllib2.urlopen("http://dynamic.xkcd.com/random/comic/")
-
-soup=BeautifulSoup(rand.read())
+soup = BeautifulSoup(rand.read())
 
 #Saving file to the current directory in which you are working.
-f=open(os.getcwd()+'\xkcd_comic.png','wb')
-
-f.write(urllib2.urlopen(soup.find_all(id="comic")[0].img['src']).read())
+file_name = os.path.join(os.getcwd(), img_name)
+with open(file_name, 'wb') as f:
+    f.write(urllib2.urlopen(soup.find_all(id="comic")[0].img['src']).read())
