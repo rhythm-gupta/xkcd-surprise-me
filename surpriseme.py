@@ -5,7 +5,7 @@ Surprise me. This script will download a random image from xkcd website.
 
 import urllib2, os
 from bs4 import BeautifulSoup
-#beautifulSoup can be downloaded from http://www.crummy.com/software/BeautifulSoup/bs4/download/
+
 img_name = 'xkcd_comic.png'   #change this if you want different file name
 rand = urllib2.urlopen("http://dynamic.xkcd.com/random/comic/")
 
